@@ -52,7 +52,7 @@ bot = InstaBot(
         'beauty', 'express', 'kredit', 'collection', 'impor', 'preloved',
         'follow', 'follower', 'gain', '.id', '_id', 'bags'
     ],
-    unfollow_whitelist=['example_user_1', 'example_user_2'])
+    unfollow_whitelist=[])
 while True:
 
     #print("# MODE 0 = ORIGINAL MODE BY LEVPASHA")

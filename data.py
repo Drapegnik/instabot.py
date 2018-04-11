@@ -1,0 +1,9 @@
+# http://www.tagblender.net/
+hashtags = {
+    'top30': '#love #instagood #me #cute #tbt #photooftheday #instamood #iphonesia #tweegram #picoftheday #igers #girl #beautiful #instadaily #summer #instagramhub #iphoneonly #follow #igdaily #bestoftheday #happy #picstitch #tagblender #jj #sky #nofilter #fashion #followme #fun #sun',
+    'top60': '#smile #instagramers #pretty #food #friends #like #lol #nature #hair #onedirection #swag #beach #funny #bored #life #cool #blue #dog #pink #art #versagram #sunset #hot #photo #instahub #my #tagblender #family #throwbackthursday #cat',
+    'top90': '#amazing #girls #awesome #clouds #baby #tagblender #party #red #repost #music #black #jj_forum #instalove #all_shots #igaddict #night #followback #yummy #white #bestfriend #green #yum #instago #halloween #school #eyes #harrystyles #sweet #2012 #2013',
+    'flcs': '#f4f #s4s #l4l #c4c #likeforlike #likeall #like4like #likes4likes #liking #instagood #tagblender #follow #followme #followback #followforfollow #follow4follow #followers #followher #follower #followhim #followbackteam #followall #comment #comments #commentback #comment4comment #commentbelow #shoutout #shoutouts #shoutoutback',
+    'followme': '#follow #followme #followback #followforfollow #follow4follow #followers #followher #follower #followhim #followbackteam #followall #followbackalways #follows #following #followgram #followalways #tagblender #followstagram #followshoutoutlikecomment #follownow #followus #followmefollowyou #followmeplease #followbackinstantly #f4f #followmeback #followyou #followforlike #ifollowback #ifollow',
+    'nature': '#weather #skylovers #natureporn #amazing #skypainters #gf_daily #light #tagblender #fantastic #green #trees #beautiful #iphonesia #naturelovers #sunset #clouds #beach #photooftheday #summer #tree #instadaily #cloud #cloudporn #natureza #mothernature #beauty #dusk #red #pretty #nature_seekers'
+}

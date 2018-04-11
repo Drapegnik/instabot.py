@@ -5,7 +5,10 @@
 ## how to run
 
 ```bash
-pip3 install requirements.txt
+pip3 install -r requirements.txt
 echo -e "username = 'foo'\npassword = 'bar'" credentials.py
+
 python3 run.py
+
+python3 post.py # post random image with some hashtags
 ```
