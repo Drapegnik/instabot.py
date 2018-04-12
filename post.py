@@ -4,28 +4,41 @@
 
 import os
 import random
-from urllib import request
-from PIL import Image
+import schedule
+import time
+
+from data import hashtags
 
 from InstagramAPI import InstagramAPI
 
+from src.utils import get_image, get_images, cleanup
 from credentials import username, password
-from data import hashtags
 
-# get random image
-dir = os.path.dirname(os.path.realpath(__file__))
-filename = 'temp.jpg'
-picsum_url = 'https://picsum.photos/1000/1000/?random' # https://picsum.photos
-request.urlretrieve(picsum_url, filename)
-Image.open(filename).save(filename) # hack to get image type (eg. `jpeg`)
+ig = InstagramAPI(username, password)
+ig.login()
 
-# set some hashtags
-caption = random.choice(list(hashtags.values()))
+def post():
+    dir = os.path.dirname(os.path.realpath(__file__))
+    caption = random.choice(list(hashtags.values()))
+    photos_num = random.randint(1, 3)
 
-# post it!
-InstagramAPI = InstagramAPI(username, password)
-InstagramAPI.login()
-InstagramAPI.uploadPhoto('{}/{}'.format(dir, filename), caption)
+    if photos_num == 1:
+        print('post image')
+        image = get_image()
+        ig.uploadPhoto('{}/{}'.format(dir, image), caption)
+        cleanup([image])
+    else:
+        print('post carousel')
+        photos = get_images(photos_num)
+        media = list(map(lambda file: dict({
+            'type': 'photo',
+            'file': '{}/{}'.format(dir, file),
+        }), photos))
+        ig.uploadAlbum(media, caption)
+        cleanup(photos)
 
-# cleanup
-os.remove(filename)
+schedule.every().day.at("13:11").do(post)
+
+while True:
+    schedule.run_pending()
+    time.sleep(1)
