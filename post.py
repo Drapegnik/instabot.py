@@ -14,31 +14,45 @@ from InstagramAPI import InstagramAPI
 from src.utils import get_image, get_images, cleanup
 from credentials import username, password
 
+WAIT = True
+
+dir = os.path.dirname(os.path.realpath(__file__))
 ig = InstagramAPI(username, password)
 ig.login()
 
-def post():
-    dir = os.path.dirname(os.path.realpath(__file__))
-    caption = random.choice(list(hashtags.values()))
-    photos_num = random.randint(1, 3)
+def get_caption():
+    return random.choice(list(hashtags.values()))
 
-    if photos_num == 1:
-        print('post image')
-        image = get_image()
-        ig.uploadPhoto('{}/{}'.format(dir, image), caption)
-        cleanup([image])
+def post_image():
+    image = get_image()
+    ig.uploadPhoto('{}/{}'.format(dir, image), get_caption())
+    cleanup([image])
+    print('post image')
+
+def post_carousel():
+    photos_num = random.randint(2, 3)
+    photos = get_images(photos_num)
+    media = list(map(lambda file: dict({
+        'type': 'photo',
+        'file': '{}/{}'.format(dir, file),
+    }), photos))
+    ig.uploadAlbum(media, get_caption())
+    cleanup(photos)
+    print('post carousel with {} images'.format(photos_num))
+
+
+def post():
+    if random.randint(1, 10) == 7:
+        post_carousel()
     else:
-        print('post carousel')
-        photos = get_images(photos_num)
-        media = list(map(lambda file: dict({
-            'type': 'photo',
-            'file': '{}/{}'.format(dir, file),
-        }), photos))
-        ig.uploadAlbum(media, caption)
-        cleanup(photos)
+        post_image()
+
 
 schedule.every().day.at("13:11").do(post)
+schedule.every().day.at("20:35").do(post)
 
-while True:
+while WAIT:
     schedule.run_pending()
     time.sleep(1)
+else:
+    post()

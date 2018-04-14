@@ -6,7 +6,7 @@
 
 ```bash
 pip3 install -r requirements.txt
-echo -e "username = 'foo'\npassword = 'bar'" credentials.py
+echo -e "username = 'foo'\npassword = 'bar'" > credentials.py
 
 python3 run.py
 
